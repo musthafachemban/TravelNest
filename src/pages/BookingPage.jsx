@@ -128,7 +128,7 @@ export default function BookingPage() {
               </label>
               <input
                 type="text"
-                placeholder="John Doe"
+                placeholder="enter your name"
                 className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
               />
             </div>
@@ -139,7 +139,7 @@ export default function BookingPage() {
               </label>
               <input
                 type="text"
-                placeholder="+91 9876543210"
+                placeholder="enter your mobile number"
                 className="w-full mt-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-400"
               />
             </div>

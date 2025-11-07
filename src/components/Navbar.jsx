@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { FiMenu, FiX, FiSearch, FiHeart, FiUser } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -22,6 +21,7 @@ function Navbar() {
       {/* TOP BAR */}
       <div className="w-full bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-6">
+          {/* Logo */}
           <h1
             onClick={() => handleScroll("home")}
             className="text-2xl font-bold tracking-wide cursor-pointer"
@@ -63,16 +63,19 @@ function Navbar() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-2xl" onClick={() => setOpen(!open)}>
+          <button
+            className="md:hidden text-2xl"
+            onClick={() => setOpen(!open)}
+          >
             {open ? <FiX /> : <FiMenu />}
           </button>
         </div>
       </div>
 
-      {/* BOTTOM MENU BAR */}
-      <div className="bg-white">
+      {/* BOTTOM MENU BAR (Desktop) */}
+      <div className="bg-white hidden md:block">
         <div className="max-w-7xl mx-auto px-6 py-2">
-          <ul className="hidden md:flex justify-center gap-10 text-gray-700 font-medium">
+          <ul className="flex justify-center gap-10 text-gray-700 font-medium">
             <li
               onClick={() => handleScroll("home")}
               className="hover:text-blue-600 cursor-pointer"
@@ -100,6 +103,53 @@ function Navbar() {
           </ul>
         </div>
       </div>
+
+      {/* ✅ MOBILE MENU (Visible when toggled) */}
+      {open && (
+        <div className="md:hidden bg-blue-600 text-white px-6 py-4 space-y-4">
+          <ul className="flex flex-col gap-4 text-lg font-medium">
+            <li
+              onClick={() => handleScroll("home")}
+              className="hover:text-gray-300 cursor-pointer"
+            >
+              Home
+            </li>
+            <li
+              onClick={() => handleScroll("destinations")}
+              className="hover:text-gray-300 cursor-pointer"
+            >
+              Destinations
+            </li>
+            <li
+              onClick={() => handleScroll("Offer")}
+              className="hover:text-gray-300 cursor-pointer"
+            >
+              Offer
+            </li>
+            <li
+              onClick={() => handleScroll("contact")}
+              className="hover:text-gray-300 cursor-pointer"
+            >
+              Contact
+            </li>
+          </ul>
+
+          {/* Mobile Icons Below Menu */}
+          <div className="flex flex-col gap-3 pt-4 border-t border-blue-400">
+            <button className="flex items-center gap-2 hover:text-gray-300 transition">
+              <FiHeart size={18} /> Wishlist
+            </button>
+
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 hover:text-gray-300 transition"
+            >
+              <FiUser size={18} /> Sign In
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
